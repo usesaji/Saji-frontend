@@ -99,6 +99,10 @@ body {
 	@apply max-w-325 mx-auto px-3 sm:px-6 lg:px-8;
 }
 
+.landing-h2 {
+	@apply text-[42px] leading-[99%] lg:text-[52px];
+}
+
 /* @theme inline {
 	--font-heading: var(--font-sans);
 	--font-sans: var(--font-sans);

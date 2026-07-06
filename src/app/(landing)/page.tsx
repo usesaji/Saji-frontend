@@ -2,6 +2,7 @@ import About from "../../components/landing/About";
 import Faq from "../../components/landing/Faq";
 import Header from "../../components/landing/Header";
 import Hero from "../../components/landing/Hero";
+import Reviews from "../../components/landing/Reviews";
 
 export default function Home() {
 	return (
@@ -10,6 +11,7 @@ export default function Home() {
 			<Hero />
 			<About />
 			<Faq />
+			<Reviews />
 		</div>
 	);
 }
