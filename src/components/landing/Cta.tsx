@@ -16,7 +16,7 @@ const Cta = () => {
 						</p>
 					</div>
 
-					<div className="space-x-4 mb-12.75 md:mb-0 md:mt-10">
+					<div className="space-x-4 mb-12.75 lg:mb-0 md:mt-10">
 						<Button variant="default" className="">
 							Get Started
 						</Button>
