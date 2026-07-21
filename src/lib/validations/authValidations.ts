@@ -50,6 +50,16 @@ export const SignUpSchema = z
   //   path: ["confirmPassword"],
   });
 
+export const VerifyOtpSchema = z.object({
+	otp: z
+		.string()
+		.length(4, "OTP must be 4 digits")
+		.regex(/^\d+$/, "OTP must contain only numbers"),
+});
+
+export type VerifyOtpValues = z.infer<typeof VerifyOtpSchema>;
+
+
 export const SignInSchema = z.object({
   email: z
     .string()

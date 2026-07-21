@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import PicSlide from "../../../features/auth/PicSlide";
-import RegisterForm from "../../../features/auth/RegisterForm";
-import Toast from "../../../components/ui/custom/Toast";
+import PicSlide from "../../../features/auth/components/PicSlide";
+import RegisterForm from "../../../features/auth/components/RegisterForm";
 
 export default function Page() {
 	return (
@@ -16,7 +15,6 @@ export default function Page() {
 					<RegisterForm />
 				</div>
 			</div>
-			<Toast />
 		</div>
 	);
 }

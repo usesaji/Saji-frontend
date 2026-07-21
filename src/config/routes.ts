@@ -4,6 +4,6 @@ export const pageRoutes = {
 	authRoutes: {
 		LOGIN: "/auth/login",
 		REGISTER: "/auth/register",
-		OTP: "/auth/register/verify-otp",
+		OTP: (email: string) => `/auth/register/verify-otp?email=${email}`,
 	},
 };

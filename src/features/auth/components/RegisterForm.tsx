@@ -1,20 +1,20 @@
-import { Button } from "../../components/ui/button";
-import InputField from "../../components/ui/custom/InputField";
+import { Button } from "../../../components/ui/button";
+import InputField from "../../../components/ui/custom/InputField";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormMessage,
-} from "../../components/ui/form";
-import { SignUpSchema } from "../../lib/validations/authValidations";
+} from "../../../components/ui/form";
+import { SignUpSchema } from "../../../lib/validations/authValidations";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import GoogleAuthBtn from "./GoogleAuthBtn";
 import Link from "next/link";
-import { pageRoutes } from "../../config/routes";
-import { toast } from "../../lib/utils/toast";
+import { pageRoutes } from "../../../config/routes";
+import { toast } from "../../../lib/utils/toast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -44,7 +44,7 @@ export default function RegisterForm() {
 		setTimeout(() => {
 			toast.success("Check your email to verify OTP", "OTP Sent");
 			setIsLoading(false);
-			router.push(pageRoutes.authRoutes.OTP);
+			router.push(pageRoutes.authRoutes.OTP(values.email));
 		}, 2000);
 	};
 

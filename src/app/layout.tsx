@@ -2,6 +2,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
+import Toast from "../components/ui/custom/Toast";
 
 const dmSans = DM_Sans({
 	variable: "--font-sans",
@@ -84,6 +85,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={cn("antialiased", dmSans.variable)}>
 			<body className="min-h-full">{children}</body>
+			<Toast />
 		</html>
 	);
 }
