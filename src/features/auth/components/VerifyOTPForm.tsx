@@ -48,7 +48,7 @@ export default function VerifyOtpForm() {
 		setTimeout(() => {
 			toast.success("Your email has been verified", "Verification Successful");
 			setIsLoading(false);
-			router.push(pageRoutes.authRoutes.LOGIN);
+			router.push(pageRoutes.authRoutes.CREATE_PROFILE);
 		}, 2000);
 	};
 

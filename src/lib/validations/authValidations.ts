@@ -97,45 +97,75 @@ export const ResetPasswordSchema = z
     path: ["confirmPassword"],
   });
 
-export const SetUpAccountSchema = z.object({
-  first_name: z
-    .string()
-    .nonempty("First name is required")
-    .trim()
-    .min(2, "First name is too short")
-    .max(50, "First name is too long"),
+export const CreateProfileSchema = z
+	.object({
+		full_name: z
+			.string()
+			.nonempty("Full name is required")
+			.trim()
+			.min(2, "Full name is too short")
+			.max(50, "Full name is too long"),
 
-  last_name: z
-    .string()
-    .nonempty("Last name is required")
-    .trim()
-    .min(2, "Last name is too short")
-    .max(50, "Last name is too long"),
+		tag_name: z
+			.string()
+			.nonempty("Tag name is required")
+			.trim()
+			.min(2, "Tag name is too short")
+			.max(50, "Tag name is too long")
+			.regex(/^\S+$/, "Tag name cannot contain spaces"),
 
-  business_name: z
-    .string()
-    .trim()
-    .min(2, "Business name is too short")
-    .max(100, "Business name is too long")
-    .optional()
-    .or(z.literal("")),
+		password: z
+			.string()
+			.min(6, "Password must be at least 6 characters")
+			.refine(
+				(v) => /[A-Z]/.test(v),
+				"Must contain at least 1 uppercase letter",
+			)
+			.refine(
+				(v) => /[a-z]/.test(v),
+				"Must contain at least 1 lowercase letter",
+			)
+			.refine((v) => /\d/.test(v), "Must contain at least 1 number")
+			.refine(
+				(v) => /[@$!%*?&.,_\-+=#]/.test(v),
+				"Must contain at least 1 symbol",
+			),
 
-  phone_number: z
-    .string()
-    .trim()
-    .regex(
-      /^\+?\d+$/,
-      "Phone number must be digits only (optionally starts with +)"
-    )
-    .min(7, "Phone number too short")
-    .max(15, "Phone number too long")
-    .optional()
-    .or(z.literal("")),
+		confirmPassword: z.string().nonempty("Please confirm your password"),
+	})
+	.refine((data) => data.password === data.confirmPassword, {
+		message: "Passwords do not match",
+		path: ["confirmPassword"],
+	})
 
-  country: z.string().trim().min(1, "Country is required"),
-});
+	// ❌ Password must NOT contain email
+	// .refine((data) => !data.password.includes(data.email), {
+	//   message: "Can't contain your email address",
+	//   path: ["password"], // attach error to password
+	// })
 
-export type SetUpAccountValues = z.infer<typeof SetUpAccountSchema>;
+	// ❌ Passwords must match
+	.refine((data) => data.password === data.confirmPassword, {
+		message: "Passwords do not match",
+		path: ["confirmPassword"],
+
+		// phone_number: z
+		//   .string()
+		//   .trim()
+		//   .regex(
+		//     /^\+?\d+$/,
+		//     "Phone number must be digits only (optionally starts with +)"
+		//   )
+		//   .min(7, "Phone number too short")
+		//   .max(15, "Phone number too long")
+		//   .optional()
+		//   .or(z.literal("")),
+
+		// country: z.string().trim().min(1, "Country is required"),
+	});
+
+export type CreateProfileValues = z.infer<typeof CreateProfileSchema>;
+
 
 export const UpdateUserSchema = z.object({
   email: z

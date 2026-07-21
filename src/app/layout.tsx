@@ -84,8 +84,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={cn("antialiased", dmSans.variable)}>
-			<body className="min-h-full">{children}</body>
-			<Toast />
+			<body className="min-h-full">
+				{children}
+				<Toast />
+			</body>
 		</html>
 	);
 }
