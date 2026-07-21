@@ -85,7 +85,7 @@ const InputField: React.FC<InputProps> = ({
 					<button
 						type="button"
 						onClick={handleView}
-						className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-xl transition-colors"
+						className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-light-hover hover:text-gray-700 dark:hover:text-gray-300 text-xl transition-colors"
 						tabIndex={-1}
 					>
 						{view ? <IoEyeOff /> : <IoEye />}
